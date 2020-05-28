@@ -15,15 +15,15 @@ ifndef FP_IMPL
 	endif
 endif
 
-classgroup: csidh.c mont.c classgroup.c reduce.c rng.c rng.h reduce.h csidh.h mont.h classgroup.h
+classgroup: csidh.c mont.c classgroup.c reduce.c rng.c rng.h reduce.h csidh.h mont.h classgroup.h keccaklib
 	@cc \
 		$(if ${BENCH_ITS},-DBENCH_ITS=${BENCH_ITS}) \
 		$(if ${BENCH_VAL},-DBENCH_VAL=${BENCH_VAL}) \
 		$(if ${BENCH_ACT},-DBENCH_ACT=${BENCH_ACT}) \
 		-I ./ \
 		-I p${BITS}/ \
-		-I ../XKCP/bin/generic64/ \
-		-L ../XKCP/bin/generic64/ \
+		-I ../XKCP/bin/Haswell/ \
+		-L ../XKCP/bin/Haswell/ \
 		-std=c11 -pedantic \
 		-Wall -Wextra \
 		-march=native -O3 \
@@ -39,7 +39,7 @@ classgroup: csidh.c mont.c classgroup.c reduce.c rng.c rng.h reduce.h csidh.h mo
 	rm -f *.o
 
 keccaklib: 
-	(cd ../XKCP; make generic64/libkeccak.a)
+	(cd ../XKCP; make Haswell/libkeccak.a)
 
 clean:
 	@rm -f main bench testcsifish

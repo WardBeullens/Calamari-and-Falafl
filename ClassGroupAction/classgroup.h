@@ -21,5 +21,4 @@ void sample_from_classgroup_with_seed(const unsigned char *seed, int8_t *vec);
 
 void shrink_vec(int8_t *vec);
 
-
 #endif
