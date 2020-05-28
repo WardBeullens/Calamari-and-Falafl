@@ -220,9 +220,9 @@ void poly_pointwise_montgomery(poly *c, const poly *a, const poly *b) {
 *              - poly *a0: pointer to output polynomial with coefficients Q + c0
 *              - const poly *v: pointer to input polynomial
 **************************************************/
-void poly_power2round(poly * restrict a1,
-                      poly * restrict a0,
-                      const poly * restrict a)
+void poly_power2round(poly * __restrict a1,
+                      poly * __restrict a0,
+                      const poly * __restrict a)
 {
   unsigned int i;
   DBENCH_START();
@@ -720,7 +720,7 @@ void poly_uniform_gamma1m1_4x(poly *a0,
 *                            POLETA_SIZE_PACKED bytes
 *              - const poly *a: pointer to input polynomial
 **************************************************/
-void polyeta_pack(uint8_t * restrict r, const poly * restrict a) {
+void polyeta_pack(uint8_t * __restrict r, const poly * __restrict a) {
 #if 2*ETA >= 16
 #error "polyeta_pack() assumes 2*ETA < 16"
 #endif
@@ -763,7 +763,7 @@ void polyeta_pack(uint8_t * restrict r, const poly * restrict a) {
 * Arguments:   - poly *r: pointer to output polynomial
 *              - const uint8_t *a: byte array with bit-packed polynomial
 **************************************************/
-void polyeta_unpack(poly * restrict r, const uint8_t * restrict a) {
+void polyeta_unpack(poly * __restrict r, const uint8_t * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
@@ -808,7 +808,7 @@ void polyeta_unpack(poly * restrict r, const uint8_t * restrict a) {
 * Arguments:   - poly *r: pointer to output polynomial
 *              - const uint8_t *a: byte array with bit-packed polynomial
 **************************************************/
-void polyt1_unpack(poly * restrict r, const uint8_t * restrict a) {
+void polyt1_unpack(poly * __restrict r, const uint8_t * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
@@ -836,7 +836,7 @@ void polyt1_unpack(poly * restrict r, const uint8_t * restrict a) {
 *                            POLT0_SIZE_PACKED bytes
 *              - const poly *a: pointer to input polynomial
 **************************************************/
-void polyt0_pack(uint8_t * restrict r, const poly * restrict a) {
+void polyt0_pack(uint8_t * __restrict r, const poly * __restrict a) {
   unsigned int i;
   uint32_t t[4];
   DBENCH_START();
@@ -871,7 +871,7 @@ void polyt0_pack(uint8_t * restrict r, const poly * restrict a) {
 * Arguments:   - poly *r: pointer to output polynomial
 *              - const uint8_t *a: byte array with bit-packed polynomial
 **************************************************/
-void polyt0_unpack(poly * restrict r, const uint8_t * restrict a) {
+void polyt0_unpack(poly * __restrict r, const uint8_t * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
@@ -913,7 +913,7 @@ void polyt0_unpack(poly * restrict r, const uint8_t * restrict a) {
 *                            POLZ_SIZE_PACKED bytes
 *              - const poly *a: pointer to input polynomial
 **************************************************/
-void polyz_pack_old(uint8_t * restrict r, const poly * restrict a) {
+void polyz_pack_old(uint8_t * __restrict r, const poly * __restrict a) {
 #if GAMMA1 > (1 << 19)
 #error "polyz_pack() assumes GAMMA1 <= 2^{19}"
 #endif
@@ -939,7 +939,7 @@ void polyz_pack_old(uint8_t * restrict r, const poly * restrict a) {
   DBENCH_STOP(*tpack);
 }
 
-void polyz_pack(uint8_t * restrict r, const poly * restrict a) {
+void polyz_pack(uint8_t * __restrict r, const poly * __restrict a) {
 #if GAMMA1 > (1 << 19)
 #error "polyz_pack() assumes GAMMA1 <= 2^{19}"
 #endif
@@ -988,7 +988,7 @@ void polyz_pack(uint8_t * restrict r, const poly * restrict a) {
 * Arguments:   - poly *r: pointer to output polynomial
 *              - const uint8_t *a: byte array with bit-packed polynomial
 **************************************************/
-void polyz_unpack_old(poly * restrict r, const uint8_t * restrict a) {
+void polyz_unpack_old(poly * __restrict r, const uint8_t * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
@@ -1011,7 +1011,7 @@ void polyz_unpack_old(poly * restrict r, const uint8_t * restrict a) {
   DBENCH_STOP(*tpack);
 }
 
-void polyz_unpack(poly * restrict r, const uint8_t * restrict a) {
+void polyz_unpack(poly * __restrict r, const uint8_t * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
@@ -1058,7 +1058,7 @@ void polyz_unpack(poly * restrict r, const uint8_t * restrict a) {
 *                            POLW1_SIZE_PACKED bytes
 *              - const poly *a: pointer to input polynomial
 **************************************************/
-void polyw1_pack(uint8_t * restrict r, const poly * restrict a) {
+void polyw1_pack(uint8_t * __restrict r, const poly * __restrict a) {
   unsigned int i;
   DBENCH_START();
 
